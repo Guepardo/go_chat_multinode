@@ -73,7 +73,7 @@ func (w *Websocket) listenRead() {
 			ChatId: w.ChatId,
 		}
 
-		w.middleware.broadcast <- message
+		w.middleware.exchangePublishChannel <- message
 	}
 }
 
