@@ -53,7 +53,7 @@ func (middleware *Middleware) handleMessages() {
 	for {
 		select {
 		case message := <-middleware.exchangeConsumeChannel:
-			for websocket, _ := range middleware.chats[message.ChatId] {
+			for websocket := range middleware.chats[message.ChatId] {
 				websocket.Send <- message.Text
 			}
 			log.Default().Print("Broadcast de mensagens")

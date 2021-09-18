@@ -139,8 +139,6 @@ func StartWebsocket(middleware *Middleware, w http.ResponseWriter, r *http.Reque
 
 	websocket.middleware.register <- websocket
 
-	// Allow collection of memory referenced by the caller by doing all work in
-	// new goroutines.
 	go websocket.listenWrite()
 	go websocket.listenRead()
 }

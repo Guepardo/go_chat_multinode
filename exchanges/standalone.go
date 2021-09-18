@@ -1,6 +1,8 @@
 package exchanges
 
 import (
+	"log"
+
 	"example.com/gochat/models"
 )
 
@@ -18,6 +20,8 @@ func (s *StandaloneExchange) GetConsumeChannel() chan *models.Message {
 }
 
 func (s *StandaloneExchange) Start() {
+	log.Default().Print("Exchange Type: Standalone")
+
 	for {
 		select {
 		case message := <-s.publish:
